@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "postinstall": "npm run build",
+    "build": "tsc",
     "dev": "ts-node-dev --respawn --transpile-only server.ts",
-    "start": "ts-node-dev --respawn --transpile-only server.ts"
+    "start": "node dist/server.js"
   },
   "keywords": [],
   "author": "",
@@ -26,6 +28,6 @@
     "@types/jsonwebtoken": "^9.0.7",
     "@types/node": "^22.7.4",
     "ts-node-dev": "^2.0.0",
-    "typescript": "^5.6.2"
+    "typescript": "^5.6.3"
   }
 }
