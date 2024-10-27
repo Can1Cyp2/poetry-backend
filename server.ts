@@ -4,23 +4,26 @@ import dotenv from "dotenv";
 import cors from "cors";
 
 import userRoutes from "./routes/user"; // Import user routes
-import poetryRoutes from "./routes/poetry"; // Import user routes
-import translationRoutes from "./routes/translation"; // Import user routes
+import poetryRoutes from "./routes/poetry"; // Import poetry routes
+import translationRoutes from "./routes/translation"; // Import translation routes
 
 dotenv.config(); // Load environment variables
 
 const app = express();
 app.use(express.json()); // Middleware to parse JSON
-app.use(
-  cors({
-    origin: "https://paulospoetry.com/",
-  })
-);
 
-// Mount the user routes
-app.use(userRoutes);
-app.use(poetryRoutes);
-app.use(translationRoutes);
+// Configure CORS with specific origins
+const corsOptions = {
+  origin: ["https://paulospoetry.com", "http://localhost:3000"], // Allow your domains
+  methods: "GET, POST, PUT, DELETE",
+  credentials: true,
+};
+app.use(cors(corsOptions)); // Apply CORS middleware
+
+// Mount the routes with path prefixes
+app.use("/users", userRoutes);
+app.use("/poetry", poetryRoutes);
+app.use("/translations", translationRoutes);
 
 // Connect to MongoDB
 mongoose
