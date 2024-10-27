@@ -47,7 +47,6 @@ export const deleteComment = async (req, res) => {
         }
 
         // Find the comment by its ID and remove it from the comments array
-        //@ts-ignore
         poem.comments = poem.comments.filter(comment => comment._id.toString() !== commentId);
 
         // Save the updated poem document

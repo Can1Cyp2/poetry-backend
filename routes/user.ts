@@ -8,7 +8,6 @@ import {deleteUser, getUsers, makeUserAdmin, removeUserAdmin} from "../controlle
 const router = express.Router();
 
 // User signup route
-//@ts-ignore
 router.post('/signup', async (req, res) => {
     // Destructure username, email, and password from req.body
     const { username, email, password } = req.body;
@@ -54,7 +53,6 @@ router.post('/signup', async (req, res) => {
     }
 });
 
-//@ts-ignore
 router.post('/login', async (req, res) => {
     const { username, password } = req.body;
 

@@ -10,7 +10,6 @@ export const checkAuth = (req: Request, res: Response, next: NextFunction) => {
 
     try {
         const decoded: any = jwt.verify(token, process.env.JWT_SECRET as string);
-        //@ts-ignore
         req.userId = decoded.userId;
         next();
     } catch (error) {
